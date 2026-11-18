@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monitor Antrean - JABABEKA CUSTOMER DAY</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+       <a href="index.html" class="operator-link" title="Halaman Petugas">
+        <i class="bi bi-person-lock"></i>
+        <span>Petugas</span>
+    </a>>
+        <h1>
+            <i class="bi bi-people-fill"></i>
+            JABABEKA CUSTOMER DAY
+            <i class="bi bi-clock-fill"></i>
+        </h1>
+
+        <p class="subtitle">
+            <i class="bi bi-eye-fill"></i>
+            Silakan pantau pemanggilan nomor antrean Anda
+        </p>
+    </header>
+
+
+    <!-- KONTEN MONITOR -->
+    <main class="main-content">
+
+        <!-- NOMOR ANTREAN DIPANGGIL -->
+        <section class="calling-section">
+
+            <div class="calling-header">
+                <h2>
+                    <i class="bi bi-megaphone-fill"></i>
+                    Pemanggilan Nomor Antrean
+                    <i class="bi bi-volume-up-fill"></i>
+                </h2>
+            </div>
+
+            <div class="calling-display">
+
+                <div class="calling-number">
+                    <i class="bi bi-ticket-perforated-fill"></i>
+                    <h1 id="nomorAktif">-</h1>
+                </div>
+
+                <div class="calling-name">
+                    <i class="bi bi-person-fill"></i>
+                    <h2 id="namaAktif">Belum ada antrean</h2>
+                </div>
+
+                <p id="layananAktif">
+                    Silakan menunggu panggilan
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- DAFTAR ANTREAN SETIAP LAYANAN -->
+        <aside class="queue-section">
+
+            <h2>
+                <i class="bi bi-list-ol"></i>
+                Antrean Saat Ini
+                <i class="bi bi-graph-up-arrow"></i>
+            </h2>
+
+            <div class="queue-list">
+
+                <div class="queue-item queue-r1">
+                    <span>R1 - NOTARIS IBU MARIA MAGDALENA</span>
+                    <strong id="jumlahR1">R1-000</strong>
+                </div>
+
+                <div class="queue-item queue-r2">
+                    <span>R2 - NOTARIS IBU TELLY FEBERIANAWATI</span>
+                    <strong id="jumlahR2">R2-000</strong>
+                </div>
+
+                <div class="queue-item queue-r3">
+                    <span>R3 - NOTARIS IBU TIARA VITA</span>
+                    <strong id="jumlahR3">R3-000</strong>
+                </div>
+
+                <div class="queue-item queue-r4">
+                    <span>R4 - NOTARIS BPK ACHMAD MUHARAM</span>
+                    <strong id="jumlahR4">R4-000</strong>
+                </div>
+
+                <div class="queue-item queue-pbb">
+                    <span>PENGAMBILAN PBB</span>
+                    <strong id="jumlahPBB">PBB-000</strong>
+                </div>
+
+                <div class="queue-item queue-lgl">
+                    <span>LGL - PENGAMBILAN DOKUMEN ASLI</span>
+                    <strong id="jumlahLGL">LGL-000</strong>
+                </div>
+
+                <div class="queue-item queue-ppjb">
+                    <span>PENGAMBILAN PPJB</span>
+                    <strong id="jumlahPPJB">PPJB-000</strong>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+    <!-- PENGATURAN SUARA -->
+    <section class="card">
+
+        <p style="text-align:center; margin-bottom:12px">
+            Aktifkan suara pada monitor agar pengumuman antrean dapat terdengar.
+        </p>
+
+        <button
+            class="btn-primary"
+            id="btnSuara"
+            type="button"
+            onclick="aktifkanSuara()"
+        >
+            <i class="bi bi-volume-up-fill"></i>
+            Aktifkan Suara Monitor
+        </button>
+
+        <p
+            id="statusSuara"
+            style="text-align:center; margin-top:10px; font-size:13px"
+        ></p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Sistem Antrean Dokumen Legal</p>
+        <span>Digitalisasi Pelayanan Pengambilan Dokumen</span>
+    </footer>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

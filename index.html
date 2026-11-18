@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JABABEKA CUSTOMER DAY</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>
+            <i class="bi bi-people-fill"></i>
+            JABABEKA CUSTOMER DAY
+            <i class="bi bi-clock-fill"></i>
+        </h1>
+
+        <p class="subtitle">
+            <i class="bi bi-ticket-perforated-fill"></i>
+            Sistem Antrean Pelayanan Dokumen
+        </p>
+    </header>
+
+
+    <!-- MONITOR ANTREAN AKTIF -->
+    <section class="card calling-section">
+
+        <div class="section-title">
+            <h2>
+                <i class="bi bi-megaphone-fill"></i>
+                Nomor Antrean Dipanggil
+            </h2>
+        </div>
+
+        <div class="calling-display">
+            <div id="nomorAktif">---</div>
+            <div id="namaAktif">Belum Ada Antrean</div>
+            <div id="layananAktif">Silakan Menunggu</div>
+        </div>
+
+        <button id="btnSuara" type="button" onclick="aktifkanSuara()">
+            <i class="bi bi-volume-up-fill"></i>
+            Aktifkan Suara
+        </button>
+
+        <p id="statusSuara"></p>
+
+    </section>
+
+
+    <!-- COUNTER LAYANAN -->
+    <section class="card">
+
+        <div class="section-title">
+            <h2>
+                <i class="bi bi-bar-chart-fill"></i>
+                Jumlah Antrean
+            </h2>
+        </div>
+
+        <div class="counter-container">
+
+            <div class="counter-box">
+                <h3>R1</h3>
+                <p id="jumlahR1">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>R2</h3>
+                <p id="jumlahR2">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>R3</h3>
+                <p id="jumlahR3">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>R4</h3>
+                <p id="jumlahR4">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>PBB</h3>
+                <p id="jumlahPBB">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>LGL</h3>
+                <p id="jumlahLGL">0</p>
+            </div>
+
+            <div class="counter-box">
+                <h3>PPJB</h3>
+                <p id="jumlahPPJB">0</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FORM PENGAMBILAN ANTREAN -->
+    <section class="card visitor-section">
+
+        <div class="section-title">
+            <h2>
+                <i class="bi bi-ticket-perforated-fill"></i>
+                Ambil Nomor Antrean
+            </h2>
+
+            <p>Silakan isi data untuk mendapatkan nomor antrean.</p>
+        </div>
+
+        <div class="form-group">
+            <label for="nama">Nama Pengunjung</label>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Masukkan nama lengkap"
+                autocomplete="off"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="layanan">Pilih Jenis Layanan</label>
+
+            <select id="layanan">
+                <option value="">-- Pilih Layanan --</option>
+                <option value="R1">R1 - BAST Notaris Ibu Maria Magdalena</option>
+                <option value="R2">R2 - BAST Notaris Ibu Telly Feberianawati</option>
+                <option value="R3">R3 - BAST Notaris Ibu Tiara Vita</option>
+                <option value="R4">R4 - BAST Notaris Bpk Achmad Muharam</option>
+                <option value="PBB">Pengambilan PBB</option>
+                <option value="LGL">Pengambilan Dokumen Asli</option>
+                <option value="PPJB">Pengambilan PPJB</option>
+            </select>
+        </div>
+
+        <button
+            class="btn-primary"
+            id="btnAmbil"
+            type="button"
+            onclick="ambilAntrean()"
+        >
+            <i class="bi bi-plus-circle-fill"></i>
+            Ambil Antrean
+        </button>
+
+        <div id="hasil"></div>
+
+    </section>
+
+
+    <!-- LOGIN PETUGAS -->
+    <section class="card">
+
+        <div class="section-title">
+            <h2>
+                <i class="bi bi-person-lock"></i>
+                Dashboard Petugas
+            </h2>
+
+            <p>Login untuk mengelola dan memanggil antrean.</p>
+        </div>
+
+        <div id="loginPanel">
+
+            <div class="form-group">
+                <label for="emailOperator">Email Petugas</label>
+
+                <input
+                    type="email"
+                    id="emailOperator"
+                    placeholder="Masukkan email petugas"
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="passwordOperator">Password</label>
+
+                <input
+                    type="password"
+                    id="passwordOperator"
+                    placeholder="Masukkan password"
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button
+                class="btn-primary"
+                id="btnLogin"
+                type="button"
+                onclick="loginOperator()"
+            >
+                <i class="bi bi-box-arrow-in-right"></i>
+                Login Petugas
+            </button>
+
+            <p id="loginError"></p>
+
+        </div>
+
+
+        <!-- PANEL DASHBOARD SETELAH LOGIN -->
+        <div id="dashboardPanel" hidden>
+
+            <div class="section-title">
+                <h2>
+                    <i class="bi bi-gear-fill"></i>
+                    Pengelolaan Antrean
+                </h2>
+            </div>
+
+            <!-- TOMBOL PENGELOLAAN -->
+            <div class="operator-controls">
+
+                <button
+                    class="btn-primary"
+                    id="panggilBerikutnya"
+                    type="button"
+                    onclick="panggilBerikutnya()"
+                >
+                    <i class="bi bi-megaphone-fill"></i>
+                    Panggil Berikutnya
+                </button>
+
+                <button
+                    class="btn-primary"
+                    id="panggilUlang"
+                    type="button"
+                    onclick="panggilUlang()"
+                >
+                    <i class="bi bi-arrow-repeat"></i>
+                    Panggil Ulang
+                </button>
+
+                <button
+                    class="btn-primary"
+                    id="selesaikan"
+                    type="button"
+                    onclick="selesaikanAntrean()"
+                >
+                    <i class="bi bi-check-circle-fill"></i>
+                    Selesaikan
+                </button>
+
+                <button
+                    class="btn-primary"
+                    id="lewati"
+                    type="button"
+                    onclick="lewatiAntrean()"
+                >
+                    <i class="bi bi-skip-forward-fill"></i>
+                    Lewati
+                </button>
+
+                <button
+                    class="btn-primary"
+                    id="resetAntrean"
+                    type="button"
+                    onclick="resetAntrean()"
+                >
+                    <i class="bi bi-trash-fill"></i>
+                    Reset Antrean
+                </button>
+
+            </div>
+
+
+            <!-- TABEL ANTREAN -->
+            <div class="section-title">
+                <h2>
+                    <i class="bi bi-list-ul"></i>
+                    Daftar Antrean
+                </h2>
+            </div>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nomor Antrean</th>
+                            <th>Nama Pengunjung</th>
+                            <th>Layanan</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="daftarAntrean">
+                        <tr>
+                            <td colspan="6">
+                                Memuat data antrean...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!-- PAGINATION -->
+            <div class="pagination">
+
+                <button
+                    id="btnSebelumnya"
+                    type="button"
+                    onclick="ubahHalaman(-1)"
+                >
+                    <i class="bi bi-chevron-left"></i>
+                    Sebelumnya
+                </button>
+
+                <span id="infoHalaman">Halaman 1</span>
+
+                <button
+                    id="btnBerikutnya"
+                    type="button"
+                    onclick="ubahHalaman(1)"
+                >
+                    Berikutnya
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+            </div>
+
+
+            <!-- LOGOUT -->
+            <button
+                class="btn-primary"
+                type="button"
+                onclick="logoutOperator()"
+            >
+                <i class="bi bi-box-arrow-right"></i>
+                Logout Petugas
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Sistem Antrean Dokumen Legal</p>
+        <span>Digitalisasi Pelayanan Pengambilan Dokumen</span>
+    </footer>
+
+</div>
+
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
